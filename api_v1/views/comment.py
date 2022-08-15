@@ -135,7 +135,7 @@ class CommentUserView(ModelViewSet):
                 Resource.objects.filter(rid=kwargs["rid"]).update(comments_count=com.count())
                 return Response(ret, status=status.HTTP_201_CREATED)
             else:
-                ret["code"] = "400"
+                ret["code"] = 400
                 ret["msg"] = ser.errors
                 return Response(ret, status=status.HTTP_400_BAD_REQUEST)
         except:
