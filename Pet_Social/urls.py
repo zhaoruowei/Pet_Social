@@ -20,7 +20,7 @@ from django.conf import settings
 
 urlpatterns = [
     # for upload media
-    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
+    re_path(r'^/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
 
     # for api_v1
     re_path(r'api/(?:(?P<version>v1)/)?', include('api_v1.urls')),
