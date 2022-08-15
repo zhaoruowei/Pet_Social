@@ -60,10 +60,12 @@ class FileUploadView(APIView):
         file_obj = request.data['file']
         obj = Resource.objects.filter(rid=kwargs["rid"], publisher_id=kwargs["pk"])
         folder = os.path.join(settings.MEDIA_ROOT, 'resource', 'user_{}'.format(kwargs.get("pk")))
+        print(folder)
         if not os.path.exists(folder):
             os.makedirs(folder)
         filename = 'resource_{}.'.format(kwargs.get("rid")) + kwargs.get("filename").split(".")[-1]
         path = os.path.join(folder, filename)
+        print(path)
         with open(path, "wb+") as PNG:
             for chunk in file_obj.chunks():
                 PNG.write(chunk)
