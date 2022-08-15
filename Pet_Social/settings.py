@@ -155,7 +155,8 @@ CACHES = {
     }
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join("/tmp/", "media")
 MEDIA_URL = "/media/"
 
 INTERNAL_IPS = ['127.0.0.1']
