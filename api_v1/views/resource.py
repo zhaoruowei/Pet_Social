@@ -180,10 +180,11 @@ class ResourceChangeView(ModelViewSet):
         user = UserInfo.objects.filter(uid=kwargs["pk"]).first()
         ser = ResourceSerializer(data=request.data, many=False)
         if ser.is_valid():
-            ser.save(publisher=user)
+            obj = ser.save(publisher=user)
+            ret["rid"] = obj.rid
             return Response(ret, status=status.HTTP_201_CREATED)
         else:
-            ret["code"] = "400"
+            ret["code"] = 400
             ret["msg"] = ser.errors
             return Response(ret, status=status.HTTP_400_BAD_REQUEST)
 
